@@ -1,0 +1,115 @@
+<%- include('partial/head.ejs') %>
+    <link rel="stylesheet" href="/stylesheets/chosing.css">
+
+    <main>
+        <div id="chosingLeft" class="w100">
+            <div class="justify-center align-center position-rel w-100 h-8vw">
+                <img src="/images/thapSinhThaiDaNang-Logo.png" alt="">
+                <h1>Chọn loại cây bạn muốn canh tác</h1>
+            </div>
+
+
+            <div id="chosingList">
+                <div class="chosing-item" id="chosingItem1">
+                    <img src="/images/chose1.jpg" alt="">
+                    <p>Loại cây adsfadsf asdfadsf asf adsf as1</p>
+                </div>
+                <div class="chosing-item" id="chosingItem2">
+                    <img src="/images/chose1.jpg" alt="">
+                    <p>Loại cây 2</p>
+                </div>
+                <div class="chosing-item" id="chosingItem3">
+                    <img src="/images/chose1.jpg" alt="">
+                    <p>Loại cây 3</p>
+                </div>
+                <div class="chosing-item" id="chosingItem4">
+                    <img src="/images/chose1.jpg" alt="">
+                    <p>Loại cây 4</p>
+                </div>
+                <div class="chosing-item" id="chosingItem5">
+                    <img src="/images/chose1.jpg" alt="">
+                    <p>Loại cây 5</p>
+                </div>
+                <div class="chosing-item" id="chosingItem6">
+                    <img src="/images/chose1.jpg" alt="">
+                    <p>Loại cây 6</p>
+                </div>
+                <div class="chosing-item" id="chosingItem7">
+                    <img src="/images/chose1.jpg" alt="">
+                    <p>Loại cây 7</p>
+                </div>
+                <div class="chosing-item" id="chosingItem8">
+                    <img src="/images/chose1.jpg" alt="">
+                    <p>Loại cây 8</p>
+                </div>
+                <div class="chosing-item" id="chosingItem9">
+                    <img src="/images/chose1.jpg" alt="">
+                    <p>Loại cây 9</p>
+                </div>
+                <div class="chosing-item" id="chosingItem10">
+                    <img src="/images/chose1.jpg" alt="">
+                    <p>Loại cây 10</p>
+                </div>
+                <div class="chosing-item" id="chosingItem11">
+                    <img src="/images/chose1.jpg" alt="">
+                    <p>Loại cây 11</p>
+                </div>
+                <div class="chosing-item" id="chosingItem12">
+                    <img src="/images/chose1.jpg" alt="">
+                    <p>Loại cây 12</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="chosingRight" class="d-none">
+            <h2 class="font-1-25vw text-center">Thông tin sinh trưởng của cây</h2>
+
+            <div id="chosingInfo">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, quidem minus tempore quod natus ipsa dolorem impedit, voluptatem, odio illum minima veritatis et atque laborum quisquam dolore! Ea, aliquam a.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, maiores ducimus similique adipisci fugiat quisquam, temporibus expedita, nisi recusandae deserunt sapiente veritatis amet! Voluptas, vel libero explicabo qui possimus nesciunt.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut sit cumque ipsa sunt corporis quod nisi itaque dolore ducimus tempora, doloremque natus quibusdam, aliquam, veritatis expedita tempore nostrum non soluta.
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function changeChosingUI() {
+            let main = document.querySelector('main');
+            let chosingLeft = document.getElementById('chosingLeft');
+            let chosingRight = document.getElementById('chosingRight');
+            let items = document.querySelectorAll('.chosing-item');
+
+            if (Array.from(items).some(item => item.getAttribute('target') === 'true')) {
+                main.style.display = 'flex';
+                main.style.flexFlow = 'row nowrap';
+                main.style.justifyContent = 'space-between';
+                main.style.alignItems = 'flex-start';
+                chosingRight.classList.remove('d-none');
+            } else {
+                main.style.display = 'block';
+                chosingRight.classList.add('d-none');
+            }
+        }
+
+        function chosingItem(params) {
+            let items = document.querySelectorAll('.chosing-item');
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    if (item.getAttribute('target') === 'true') {
+                        items.forEach(item => {
+                            item.setAttribute('target', 'false');
+                        });
+                    } else {
+                        items.forEach(item => {
+                            item.setAttribute('target', 'false');
+                        });
+                        item.setAttribute('target', 'true');
+                    }
+                    changeChosingUI();
+                });
+            });
+        }
+        chosingItem();
+    </script>
+
+    <%- include('partial/footer.ejs') %>
