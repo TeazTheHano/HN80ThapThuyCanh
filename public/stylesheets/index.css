@@ -44,7 +44,7 @@ nav {
                 position: absolute;
                 top: 0;
                 left: 0;
-                z-index: 10;
+                z-index: 1000;
                 transition: all 0.5s;
 
                 >div[class='position-rel'] {
@@ -126,6 +126,7 @@ main {
     padding: 6vw;
     z-index: 2;
     gap: 4vw;
+    transition: all 0.5s;
 
     #indexLeft {
         display: flex;
@@ -158,8 +159,6 @@ main {
         
         #indexContent {
             height: 60vh;
-            /* overflow: clip; */
-            position: relative;
 
             #chartTab {
                 transition: all 0.5s;
@@ -207,7 +206,7 @@ main {
                         gap: 1vw;
                         align-items: center;
                         justify-content: center;
-                        padding: 2vw;
+                        padding: 1vw;
                         border-radius: 2vw;
                         background-color: rgba(82, 160, 83, 1);
                         cursor: pointer;

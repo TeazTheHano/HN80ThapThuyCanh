@@ -111,10 +111,10 @@
         </div>
       </div>
     </div>
+    
+      <img id="scrollDownBtn" src="/images/scrollDown.png" alt="">
+      <img id="scrollUpBtn" class="d-none" src="/images/scrollUp.png" alt="">
   </main>
-
-  <img id="scrollDownBtn" src="/images/scrollDown.png" alt="">
-  <img id="scrollUpBtn" class="d-none" src="/images/scrollUp.png" alt="">
 
   <script>
     function scroll() {
@@ -192,8 +192,8 @@
             navImg.forEach(img => {
               img.style.pointerEvents = 'none';
             });
-            document.querySelector('#scrollDownBtn').classList.add('d-none-force')
-            document.querySelector('#scrollUpBtn').classList.add('d-none-force')
+            document.querySelector('main').classList.add('d-none-force')
+            // document.querySelector('#scrollUpBtn').classList.add('d-none-force')
           }
 
         });
@@ -213,8 +213,8 @@
             navImg.forEach(img => {
               img.style.pointerEvents = 'auto';
             });
-            document.querySelector('#scrollDownBtn').classList.remove('d-none-force')
-            document.querySelector('#scrollUpBtn').classList.remove('d-none-force')
+            document.querySelector('main').classList.remove('d-none-force')
+            // document.querySelector('#scrollUpBtn').classList.remove('d-none-force')
           }
         });
       });
