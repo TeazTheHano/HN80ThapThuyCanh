@@ -41,7 +41,7 @@
             <div id="registerArea" class="d-none">
                 <h2>Đăng ký tài khoản</h2>
 
-                <form id="loginForm" method="post">
+                <form id="registerForm" method="post">
                     <div>
                         <label for="registerUserName">Email của bạn: </label>
                         <input type="text" required name="registerUserName" id="registerUserName"
@@ -56,13 +56,13 @@
 
                     <div>
                         <label for="registerPassword">Mật khẩu: </label>
-                        <input type="password" required name="loginPassword" id="loginPassword"
+                        <input type="password" required name="registerPassword" id="registerPassword"
                             placeholder="Nhập mật khẩu">
                     </div>
 
                     <div>
                         <label for="reRegisterPassword">Nhập lại mật khẩu: </label>
-                        <input type="password" required name="loginPassword" id="loginPassword"
+                        <input type="password" required name="reRegisterPassword" id="reRegisterPassword"
                             placeholder="Nhập lại mật khẩu">
                         <div class="flex-row-nowrap align-center gap-05vw margin-vertical-1vw">
                             <input type="checkbox" onclick="passwordVisible()">

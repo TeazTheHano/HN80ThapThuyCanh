@@ -1,12 +1,224 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <%- include('modal.ejs') %>
-  </body>
-</html>
+<%- include('partial/head.ejs') %>
+  <link rel="stylesheet" href="/stylesheets/index.css">
+
+  <nav>
+    <div>
+      <div class="" id="logoNav">
+        <img src="/images/thapSinhThaiDaNang-Logo.png" onclick="window.location.href='/'" alt="">
+        <p class="uppercase font-bold font-1-25vw">Tháp sinh thái xanh<br>đa năng</p>
+      </div>
+
+      <div class="nav-item">
+        <img src="/images/tree-info.png" alt="">
+        <dialog id="treeInfo">
+          <div class="position-rel">
+            <span style="font-weight: 900;" class="material-symbols-outlined dialog-close">close</span>
+            <h2 class="text-center">Thông tin sinh trưởng của cây</h2>
+            <div id="treeInfoContent">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit totam qui tempore in adipisci, aperiam hic
+              delectus pariatur temporibus quaerat voluptates, neque assumenda veniam doloribus nisi repellat officia
+              repudiandae veritatis? <br>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto corporis dignissimos hic ut atque nam ipsa
+              officiis consectetur laudantium, ex eos? Alias temporibus ab, ullam nesciunt vel voluptate itaque
+              repudiandae. <br>
+            </div>
+          </div>
+        </dialog>
+      </div>
+    </div>
+
+    <div>
+      <div class="nav-item">
+        <img src="/images/project-info.png" alt="">
+        <dialog id="projectInfo">
+          <div class="position-rel">
+            <span style="font-weight: 900;" class="material-symbols-outlined dialog-close">close</span>
+            <h2 class="text-center">Thông tin về Tháp Sinh Thái Xanh đa năng</h2>
+            <div id="projectInfoContent">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit totam qui tempore in adipisci, aperiam hic
+              delectus pariatur temporibus quaerat voluptates, neque assumenda veniam doloribus nisi repellat officia
+              repudiandae veritatis? <br>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto corporis dignissimos hic ut atque nam ipsa
+              officiis consectetur laudantium, ex eos? Alias temporibus ab, ullam nesciunt vel voluptate itaque
+              repudiandae. <br>
+            </div>
+          </div>
+        </dialog>
+      </div>
+
+      <div class="nav-item">
+        <img src="/images/setting.png" alt="">
+        <dialog id="setting" class="dialog-close">
+          <div id="settingDialog">
+            <div>
+              <!-- TODO: end section -->
+              <span style="font-weight: 900;" class="material-symbols-outlined"
+                onclick="window.location.href='/login'">logout</span>
+              <span style="font-weight: 900;" class="material-symbols-outlined"
+                onclick="alert('Not supported yet UwU')">call_quality</span>
+            </div>
+            <img src="/images/setting.png" alt="" active>
+          </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-row-nowrap">
+    <div id="indexLeft">
+      <img src="/images/thap.png" alt="">
+      <div class="font-1-5vw">Chế độ: Tự động</div>
+    </div>
+
+    <div id="indexRight">
+      <div class="font-1-5vw font-bold">
+        Thời tiết hiện tại:
+        <span style="font-weight: 900; color: rgba(216, 0, 50, 1);"
+          class="material-symbols-outlined">device_thermostat</span>
+        <span id="currentTemp">00</span> ˚C
+        <span style="font-weight: 900; color: rgba(0, 172, 172, 1);"
+          class="material-symbols-outlined">humidity_high</span>
+        <span id="currentHumid">00</span> %
+        <span id="currentConditions">
+          <!-- js change the conditions inside -->
+        </span>
+      </div>
+
+      <div id="indexContent">
+        <div id="chartTab">
+          <div>
+            <div class="chartItem"></div>
+            <div class="chartItem"></div>
+            <div class="chartItem"></div>
+            <div class="chartItem"></div>
+            <div class="chartItem"></div>
+            <div class="chartItem"></div>
+          </div>
+        </div>
+
+        <div id="controlTab">
+          <div>
+            <div class="control-item" id="controlItem1">fnc 1</div>
+            <div class="control-item" id="controlItem2">fnc 2</div>
+            <div class="control-item" id="controlItem3">fnc 3</div>
+            <div class="control-item" id="controlItem4">fnc 4</div>
+            <div class="control-item" id="controlItem5">fnc 5</div>
+            <div class="control-item" id="controlItem6">fnc 6</div>
+            <div class="control-item" id="controlItem7">fnc 7</div>
+            <div class="control-item" id="controlItem8">fnc 8</div>
+            <div class="control-item" id="controlItem9">fnc 9</div>
+            <div class="control-item" id="controlItem10">fnc 10</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <img id="scrollDownBtn" src="/images/scrollDown.png" alt="">
+  <img id="scrollUpBtn" class="d-none" src="/images/scrollUp.png" alt="">
+
+  <script>
+    function scroll() {
+      let scrollDownBtn = document.getElementById('scrollDownBtn');
+      let scrollUpBtn = document.getElementById('scrollUpBtn');
+      let chartTab = document.getElementById('chartTab');
+      let controlTab = document.getElementById('controlTab');
+
+      function scrollDown() {
+        scrollUpBtn.classList.remove('d-none');
+        scrollDownBtn.classList.add('d-none');
+        chartTab.style.transform = 'translateY(calc(-100% - 2vw)';
+        controlTab.style.transform = 'translateY(-100%)';
+        chartTab.style.opacity = '0';
+        controlTab.style.opacity = '1';
+      }
+
+      function scrollUp() {
+        scrollUpBtn.classList.add('d-none');
+        scrollDownBtn.classList.remove('d-none');
+        chartTab.style.transform = 'translateY(0)';
+        controlTab.style.transform = 'translateY(100%)';
+        chartTab.style.opacity = '1';
+        controlTab.style.opacity = '0';
+      }
+
+      scrollDownBtn.addEventListener('click', () => {
+        scrollDown();
+      });
+
+      scrollUpBtn.addEventListener('click', () => {
+        scrollUp();
+      });
+
+      let isScrolling = false;
+      window.addEventListener('scroll', handleScroll);
+
+      function handleScroll() {
+        if (!isScrolling) {
+          isScrolling = true;
+          // Check the scroll direction
+          const scrollDirection = window.scrollY > prevScrollY ? 'down' : 'up';
+
+          // Log based on scroll direction
+          if (scrollDirection === 'down') {
+            scrollDown();
+          } else if (scrollDirection === 'up') {
+            scrollUp();
+          }
+
+          // Store previous scroll position for comparison
+          prevScrollY = window.scrollY;
+
+          // Debounce the scroll event listener
+          setTimeout(() => {
+            isScrolling = false;
+          }, 500);
+        }
+      }
+
+      // Initialize prevScrollY variable
+      let prevScrollY = window.scrollY;
+
+
+    }
+    scroll();
+
+    function openNav() {
+      let navImg = document.querySelectorAll('.nav-item>img');
+      navImg.forEach(img => {
+        img.addEventListener('click', () => {
+          let dialog = img.nextElementSibling;
+          if (dialog) {
+            dialog.setAttribute('open', 'true');
+            navImg.forEach(img => {
+              img.style.pointerEvents = 'none';
+            });
+            document.querySelector('#scrollDownBtn').classList.add('d-none-force')
+            document.querySelector('#scrollUpBtn').classList.add('d-none-force')
+          }
+
+        });
+      });
+    }
+    openNav();
+
+    function dialogClose() {
+      let closeBtn = document.querySelectorAll('.dialog-close');
+      // find the nearest dialog
+      closeBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+          let dialog = btn.closest('dialog');
+          if (dialog) {
+            dialog.removeAttribute('open');
+            let navImg = document.querySelectorAll('.nav-item>img');
+            navImg.forEach(img => {
+              img.style.pointerEvents = 'auto';
+            });
+            document.querySelector('#scrollDownBtn').classList.remove('d-none-force')
+            document.querySelector('#scrollUpBtn').classList.remove('d-none-force')
+          }
+        });
+      });
+    }
+    dialogClose();
+  </script>
+  <%- include('partial/footer.ejs') %>

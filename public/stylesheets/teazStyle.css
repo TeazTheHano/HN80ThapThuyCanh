@@ -773,6 +773,18 @@ h2 {
   vertical-align: top;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
 .text-overflow-3 {
   overflow: hidden;
   text-overflow: ellipsis;

@@ -3,7 +3,7 @@
 
     <main>
         <div id="chosingLeft" class="w100">
-            <div class="justify-center align-center position-rel w-100 h-8vw">
+            <div class="justify-center align-center position-rel w-100 overflow-visible">
                 <img src="/images/thapSinhThaiDaNang-Logo.png" alt="">
                 <h1>Chọn loại cây bạn muốn canh tác</h1>
             </div>
@@ -62,54 +62,67 @@
         </div>
 
         <div id="chosingRight" class="d-none">
-            <h2 class="font-1-25vw text-center">Thông tin sinh trưởng của cây</h2>
 
             <div id="chosingInfo">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, quidem minus tempore quod natus ipsa dolorem impedit, voluptatem, odio illum minima veritatis et atque laborum quisquam dolore! Ea, aliquam a.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, maiores ducimus similique adipisci fugiat quisquam, temporibus expedita, nisi recusandae deserunt sapiente veritatis amet! Voluptas, vel libero explicabo qui possimus nesciunt.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut sit cumque ipsa sunt corporis quod nisi itaque dolore ducimus tempora, doloremque natus quibusdam, aliquam, veritatis expedita tempore nostrum non soluta.
+                <h2 class="font-1-25vw text-center">Thông tin sinh trưởng của cây</h2>
+                <div>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, quidem minus tempore quod
+                    natus
+                    ipsa dolorem impedit, voluptatem, odio illum minima veritatis et atque laborum quisquam dolore! Ea,
+                    aliquam a.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, maiores ducimus similique adipisci
+                    fugiat quisquam, temporibus expedita, nisi recusandae deserunt sapiente veritatis amet! Voluptas,
+                    vel
+                    libero explicabo qui possimus nesciunt.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut sit cumque ipsa sunt corporis quod nisi
+                    itaque dolore ducimus tempora, doloremque natus quibusdam, aliquam, veritatis expedita tempore
+                    nostrum
+                    non soluta.
+                </div>
             </div>
+
+            <div id="chosingSubmit" class="font-1-25vw">
+                Hoàn tất!
+            </div>
+
         </div>
     </main>
 
     <script>
-        function changeChosingUI() {
+        function changeChosingUI(items) {
             let main = document.querySelector('main');
-            let chosingLeft = document.getElementById('chosingLeft');
             let chosingRight = document.getElementById('chosingRight');
-            let items = document.querySelectorAll('.chosing-item');
 
             if (Array.from(items).some(item => item.getAttribute('target') === 'true')) {
-                main.style.display = 'flex';
-                main.style.flexFlow = 'row nowrap';
-                main.style.justifyContent = 'space-between';
-                main.style.alignItems = 'flex-start';
-                chosingRight.classList.remove('d-none');
+                main.style.display = 'grid';
+                main.style.gridTemplateColumns = '60% 40%';
+                chosingRight.style.display = 'flex';
             } else {
                 main.style.display = 'block';
-                chosingRight.classList.add('d-none');
+                chosingRight.style.display = 'none';
             }
         }
 
-        function chosingItem(params) {
+        function chosingItem() {
             let items = document.querySelectorAll('.chosing-item');
             items.forEach(item => {
                 item.addEventListener('click', () => {
-                    if (item.getAttribute('target') === 'true') {
-                        items.forEach(item => {
-                            item.setAttribute('target', 'false');
-                        });
-                    } else {
-                        items.forEach(item => {
-                            item.setAttribute('target', 'false');
-                        });
-                        item.setAttribute('target', 'true');
-                    }
-                    changeChosingUI();
+                    items.forEach(item => item.setAttribute('target', 'false'));
+                    item.setAttribute('target', 'true');
+                    changeChosingUI(items);
                 });
             });
         }
         chosingItem();
+
+        function chosen() {
+            let submit = document.getElementById('chosingSubmit');
+            submit.addEventListener('click', () => {
+                alert('Chọn cây thành công!');
+                window.location.href = '/';
+            });
+        }
+        chosen();
     </script>
 
     <%- include('partial/footer.ejs') %>
